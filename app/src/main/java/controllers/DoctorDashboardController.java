@@ -44,8 +44,6 @@ public class DoctorDashboardController {
     @FXML private Label connectedPatientsLabel;
     @FXML private Label systemTimeLabel;
 
-    @FXML private RadioButton myQueueRadio;
-    @FXML private RadioButton allPatientsRadio;
 
     @FXML private TableView<QueuedPatient> patientTable;
     @FXML private TableColumn<QueuedPatient, Long> idColumn;
