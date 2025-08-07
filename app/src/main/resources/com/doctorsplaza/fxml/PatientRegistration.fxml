@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" spacing="20.0" style="-fx-background-color: #ECF0F1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PatientRegistrationController">
+    <children>
+        <Label text="Register New Patient" style="-fx-text-fill: #34495E;">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+        <!-- The ScrollPane has been added here to contain the form VBox -->
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: transparent; -fx-border-color: transparent;">
+            <content>
+                <VBox spacing="10.0" style="-fx-background-color: white; -fx-border-color: #BDC3C7; -fx-border-radius: 8px; -fx-padding: 20px;">
+                    <children>
+                        <Label text="First Name:" style="-fx-text-fill: #34495E;" />
+                        <TextField fx:id="firstNameField" promptText="First Name" style="-fx-border-color: #BDC3C7; -fx-border-radius: 5; -fx-background-radius: 5;" />
+                        <Label text="Last Name:" style="-fx-text-fill: #34495E;" />
+                        <TextField fx:id="lastNameField" promptText="Last Name" style="-fx-border-color: #BDC3C7; -fx-border-radius: 5; -fx-background-radius: 5;" />
+                        <Label text="Gender:" style="-fx-text-fill: #34495E;" />
+                        <TextField fx:id="genderField" promptText="Gender" style="-fx-border-color: #BDC3C7; -fx-border-radius: 5; -fx-background-radius: 5;" />
+                        <Label text="Date of Birth:" style="-fx-text-fill: #34495E;" />
+                        <DatePicker fx:id="dateOfBirthPicker" style="-fx-border-color: #BDC3C7; -fx-border-radius: 5; -fx-background-radius: 5;" />
+                        <Label text="Phone Number:" style="-fx-text-fill: #34495E;" />
+                        <TextField fx:id="phoneNumberField" promptText="Phone Number" style="-fx-border-color: #BDC3C7; -fx-border-radius: 5; -fx-background-radius: 5;" />
+                        <Label text="Email:" style="-fx-text-fill: #34495E;" />
+                        <TextField fx:id="emailField" promptText="Email" style="-fx-border-color: #BDC3C7; -fx-border-radius: 5; -fx-background-radius: 5;" />
+                        <Label text="ID Number:" style="-fx-text-fill: #34495E;" />
+                        <TextField fx:id="idNumberField" promptText="ID Number" style="-fx-border-color: #BDC3C7; -fx-border-radius: 5; -fx-background-radius: 5;" />
+                        <Label text="Emergency Contact Name:" style="-fx-text-fill: #34495E;" />
+                        <TextField fx:id="emergencyContactNameField" promptText="Emergency Contact Name" style="-fx-border-color: #BDC3C7; -fx-border-radius: 5; -fx-background-radius: 5;" />
+                        <Label text="Emergency Contact Number:" style="-fx-text-fill: #34495E;" />
+                        <TextField fx:id="emergencyContactNumberField" promptText="Emergency Contact Number" style="-fx-border-color: #BDC3C7; -fx-border-radius: 5; -fx-background-radius: 5;" />
+                        <Label text="Insurance Provider:" style="-fx-text-fill: #34495E;" />
+                        <TextField fx:id="insuranceProviderField" promptText="Insurance Provider" style="-fx-border-color: #BDC3C7; -fx-border-radius: 5; -fx-background-radius: 5;" />
+                        <Label text="Insurance Number:" style="-fx-text-fill: #34495E;" />
+                        <TextField fx:id="insuranceNumberField" promptText="Insurance Number" style="-fx-border-color: #BDC3C7; -fx-border-radius: 5; -fx-background-radius: 5;" />
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+        <VBox alignment="CENTER_RIGHT" spacing="10.0">
+            <children>
+                <Button fx:id="saveButton" onAction="#handleSave" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Save and Add to Queue" />
+                <Button fx:id="cancelButton" onAction="#handleCancel" style="-fx-background-color: #E74C3C; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Cancel" />
+            </children>
+        </VBox>
+    </children>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+</VBox>

@@ -1,0 +1,49 @@
+/* Root gradient background */
+.root {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #003366, #0055A5);
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+/* Label styling */
+.label {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+/* Title label (optional specific styling if needed) */
+.label:only-of-type {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+/* Text field and password field styling */
+.text-field, .password-field {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-border-color: white;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 5 10 5 10;
+}
+
+/* Button styling */
+.button {
+    -fx-background-color: #0055A5;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}
+
+/* Button hover effect */
+.button:hover {
+    -fx-background-color: #0077CC;
+}
+
+/* Error label styling */
+#errorLabel {
+    -fx-text-fill: red;
+    -fx-font-size: 12px;
+}
