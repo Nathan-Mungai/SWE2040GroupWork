@@ -53,11 +53,9 @@ public class DoctorDashboardController {
     @FXML private TableColumn<QueuedPatient, String> phoneColumn;
     @FXML private TableColumn<QueuedPatient, String> statusColumn;
     @FXML private TableColumn<QueuedPatient, LocalDateTime> queuedColumn;
-    @FXML private TableColumn<QueuedPatient, String> lastVisitColumn;
 
     // Buttons
     @FXML private Button dashboardButton;
-    @FXML private Button myPatientsButton;
     @FXML private Button appointmentsButton;
     @FXML private Button settingsButton;
     @FXML private Button logoutButton;
@@ -96,13 +94,7 @@ public class DoctorDashboardController {
         statusColumn.setCellValueFactory(new PropertyValueFactory<>("patientStatus"));
         queuedColumn.setCellValueFactory(new PropertyValueFactory<>("queuedAt"));
 
-        lastVisitColumn.setCellValueFactory(cellData -> {
-            LocalDateTime lastVisit = cellData.getValue().getPatient().getLastVisit();
-            if (lastVisit != null) {
-                return new SimpleStringProperty(lastVisit.toString());
-            }
-            return new SimpleStringProperty("N/A");
-        });
+       
 
         patientTable.setItems(queueData);
 

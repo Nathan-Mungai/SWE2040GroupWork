@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -12,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: #ECF0F1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DoctorDashboardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" style="-fx-background-color: #ECF0F1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DoctorDashboardController">
    <left>
       <VBox prefHeight="840.0" prefWidth="250.0" style="-fx-background-color: #2C3E50;" BorderPane.alignment="CENTER">
          <children>
@@ -28,8 +27,7 @@
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                <children>
                   <Button fx:id="dashboardButton" alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#handleDashboard" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #34495E; -fx-text-fill: white; -fx-font-weight: bold;" text="Dashboard" />
-                  <Button fx:id="myPatientsButton" alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#handleMyPatients" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-text-fill: white;" text="My Patients" />
-                  <Button fx:id="appointmentsButton" alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#handleAppointments" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Appointments" />
+                  <Button fx:id="appointmentsButton" alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#handleAppointments" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Insurance" />
                   <Button fx:id="settingsButton" alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#handleSettings" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Settings" />
                </children>
                <padding>
@@ -76,8 +74,6 @@
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <RadioButton fx:id="myQueueRadio" mnemonicParsing="false" onAction="#handleQueueFilter" text="My Queue" />
-                  <RadioButton fx:id="allPatientsRadio" mnemonicParsing="false" onAction="#handleQueueFilter" text="All Patients" />
                   <Label fx:id="queueStatusLabel" text="Showing: My Queue (0 patients)" />
                   <Region HBox.hgrow="ALWAYS" />
                   <Button fx:id="refreshButton" mnemonicParsing="false" onAction="#handleRefresh" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Refresh" />
