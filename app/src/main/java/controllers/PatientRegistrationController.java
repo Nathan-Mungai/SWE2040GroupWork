@@ -3,19 +3,19 @@ package controllers;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import models.Patient;
 import services.PatientService;
-import java.time.LocalDate;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class PatientRegistrationController {
 
     private static final Logger LOGGER = Logger.getLogger(PatientRegistrationController.class.getName());
-
-    @FXML private AnchorPane patientRegistrationAnchorPane;
+    
+    @FXML private VBox rootVBox; 
     @FXML private TextField firstNameField;
     @FXML private TextField lastNameField;
     @FXML private ComboBox<String> genderComboBox;
@@ -27,7 +27,6 @@ public class PatientRegistrationController {
     @FXML private TextField emergencyContactNumberField;
     @FXML private TextField insuranceProviderField;
     @FXML private TextField insuranceNumberField;
-    @FXML private TextArea addressArea;
 
     private final PatientService patientService = new PatientService();
 
@@ -45,7 +44,7 @@ public class PatientRegistrationController {
         Patient patient = new Patient();
         patient.setFirstName(firstNameField.getText());
         patient.setLastName(lastNameField.getText());
-        patient.setGender(genderComboBox.getValue());
+        patient.setGender(genderComboBox.getValue().toUpperCase());
         patient.setDateOfBirth(dobDatePicker.getValue());
         patient.setPhoneNumber(phoneNumberField.getText());
         patient.setEmail(emailField.getText());
@@ -54,7 +53,6 @@ public class PatientRegistrationController {
         patient.setEmergencyContactNumber(emergencyContactNumberField.getText());
         patient.setInsuranceProvider(insuranceProviderField.getText());
         patient.setInsuranceNumber(insuranceNumberField.getText());
-        patient.setAddress(addressArea.getText());
 
         new Thread(() -> {
             try {
@@ -62,18 +60,29 @@ public class PatientRegistrationController {
                 javafx.application.Platform.runLater(() -> {
                     showAlert("Success", "Patient " + savedPatient.getFullName() + " registered successfully!");
                     clearFields();
+                    // Removed the call to handleCancel() here to prevent a NullPointerException
+                    // The user will now need to manually click the Cancel button to close the window
+                    // or a new function can be implemented here.
                 });
-            } catch (Exception e) {
+            } catch (IOException e) {
                 LOGGER.log(Level.SEVERE, "Failed to register patient", e);
-                javafx.application.Platform.runLater(() -> showAlert("Error", "Failed to register patient. Please check the logs."));
+                javafx.application.Platform.runLater(() -> showAlert("Error", "Failed to register patient: " + e.getMessage()));
+            } catch (Exception ex) {
+                Logger.getLogger(PatientRegistrationController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }).start();
     }
 
     @FXML
     private void handleCancel() {
-        Stage stage = (Stage) patientRegistrationAnchorPane.getScene().getWindow();
-        stage.close();
+        // Use a reliably injected field (like a TextField) to get the Scene and then the Stage.
+        // This is a more robust way to handle closing the window.
+        if (firstNameField != null && firstNameField.getScene() != null && firstNameField.getScene().getWindow() instanceof Stage) {
+            Stage stage = (Stage) firstNameField.getScene().getWindow();
+            stage.close();
+        } else {
+            LOGGER.log(Level.WARNING, "Failed to close the window. The firstNameField, scene, or stage was not available.");
+        }
     }
 
     private boolean validateInput() {
@@ -97,7 +106,6 @@ public class PatientRegistrationController {
         emergencyContactNumberField.clear();
         insuranceProviderField.clear();
         insuranceNumberField.clear();
-        addressArea.clear();
     }
 
     private void showAlert(String title, String content) {

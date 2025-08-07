@@ -25,7 +25,6 @@ public class Patient {
     private String insuranceProvider;
     private String insuranceNumber;
     private LocalDateTime createdAt;
-    private String address;
 
     // Properties to be displayed in the TableView
     private String status;
@@ -114,14 +113,6 @@ public class Patient {
         this.idNumber = idNumber;
     }
     
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getEmergencyContactName() {
         return emergencyContactName;
     }

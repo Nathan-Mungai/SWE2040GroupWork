@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -16,7 +17,6 @@
                 <Font name="System Bold" size="24.0" />
             </font>
         </Label>
-        <!-- The ScrollPane has been added here to contain the form VBox -->
         <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: transparent; -fx-border-color: transparent;">
             <content>
                 <VBox spacing="10.0" style="-fx-background-color: white; -fx-border-color: #BDC3C7; -fx-border-radius: 8px; -fx-padding: 20px;">
@@ -26,9 +26,9 @@
                         <Label text="Last Name:" style="-fx-text-fill: #34495E;" />
                         <TextField fx:id="lastNameField" promptText="Last Name" style="-fx-border-color: #BDC3C7; -fx-border-radius: 5; -fx-background-radius: 5;" />
                         <Label text="Gender:" style="-fx-text-fill: #34495E;" />
-                        <TextField fx:id="genderField" promptText="Gender" style="-fx-border-color: #BDC3C7; -fx-border-radius: 5; -fx-background-radius: 5;" />
+                        <ComboBox fx:id="genderComboBox" promptText="Select Gender" style="-fx-border-color: #BDC3C7; -fx-border-radius: 5; -fx-background-radius: 5;" />
                         <Label text="Date of Birth:" style="-fx-text-fill: #34495E;" />
-                        <DatePicker fx:id="dateOfBirthPicker" style="-fx-border-color: #BDC3C7; -fx-border-radius: 5; -fx-background-radius: 5;" />
+                        <DatePicker fx:id="dobDatePicker" style="-fx-border-color: #BDC3C7; -fx-border-radius: 5; -fx-background-radius: 5;" />
                         <Label text="Phone Number:" style="-fx-text-fill: #34495E;" />
                         <TextField fx:id="phoneNumberField" promptText="Phone Number" style="-fx-border-color: #BDC3C7; -fx-border-radius: 5; -fx-background-radius: 5;" />
                         <Label text="Email:" style="-fx-text-fill: #34495E;" />
