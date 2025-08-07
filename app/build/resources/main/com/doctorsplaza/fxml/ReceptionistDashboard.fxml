@@ -76,7 +76,6 @@
                                 <Button mnemonicParsing="false" onAction="#handleAddToMyQueue" style="-fx-background-color: #3498DB; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Add to My Queue" />
                                 <Button fx:id="removeFromQueueButton" mnemonicParsing="false" onAction="#handleRemoveFromQueue" style="-fx-background-color: #E74C3C; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Remove from Queue" />
                                 <Region HBox.hgrow="ALWAYS" />
-                                <Label fx:id="statusLabel" style="-fx-text-fill: #34495E;" text="Status: Idle" />
                             </children>
                         </HBox>
                         <TableView fx:id="patientTable" prefHeight="400.0" prefWidth="200.0">
@@ -86,7 +85,6 @@
                                 <TableColumn fx:id="genderColumn" prefWidth="80.0" text="Gender" />
                                 <TableColumn fx:id="ageColumn" prefWidth="80.0" text="Age" />
                                 <TableColumn fx:id="phoneColumn" prefWidth="120.0" text="Phone" />
-                                <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status" />
                                 <TableColumn fx:id="queuedAtColumn" prefWidth="150.0" text="Queued At" />
                                 <TableColumn fx:id="lastVisitColumn" prefWidth="150.0" text="Last Visit" />
                             </columns>

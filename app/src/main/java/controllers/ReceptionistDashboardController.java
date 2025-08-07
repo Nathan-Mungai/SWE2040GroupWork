@@ -42,7 +42,6 @@ public class ReceptionistDashboardController {
 
     @FXML private Label welcomeLabel;
     @FXML private Label systemTimeLabel;
-    @FXML private Label statusLabel;
     @FXML private Label connectedPatientsLabel;
     @FXML private Label lastUpdateLabel;
     @FXML private Button dashboardButton;
@@ -60,7 +59,6 @@ public class ReceptionistDashboardController {
     @FXML private TableColumn<QueuedPatient, String> genderColumn;
     @FXML private TableColumn<QueuedPatient, Integer> ageColumn;
     @FXML private TableColumn<QueuedPatient, String> phoneColumn;
-    @FXML private TableColumn<QueuedPatient, String> statusColumn;
     @FXML private TableColumn<QueuedPatient, LocalDateTime> queuedAtColumn;
 
     private final PatientService patientService = new PatientService();
@@ -83,7 +81,6 @@ public class ReceptionistDashboardController {
             genderColumn.setCellValueFactory(new PropertyValueFactory<>("gender"));
             ageColumn.setCellValueFactory(new PropertyValueFactory<>("age"));
             phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-            statusColumn.setCellValueFactory(new PropertyValueFactory<>("patientStatus"));
             queuedAtColumn.setCellValueFactory(new PropertyValueFactory<>("queuedAt"));
             
             patientTable.setItems(queuedPatientsData);
@@ -108,13 +105,11 @@ public class ReceptionistDashboardController {
                     queuedPatientsData.setAll(allPatients);
                     lastUpdateLabel.setText("Last Update: " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                     connectedPatientsLabel.setText("Connected Patients: " + allPatients.size());
-                    statusLabel.setText("Status: Ready");
                 });
             } catch (Exception e) {
                 LOGGER.log(Level.SEVERE, "Failed to load patients", e);
                 Platform.runLater(() -> {
                     showAlert("Error", "Failed to load patients: " + e.getMessage());
-                    statusLabel.setText("Status: Error");
                 });
             }
         }).start();
@@ -152,13 +147,11 @@ public class ReceptionistDashboardController {
                 Platform.runLater(() -> {
                     queuedPatientsData.setAll(allQueuedPatients);
                     connectedPatientsLabel.setText("Patients in Queue: " + allQueuedPatients.size());
-                    statusLabel.setText("Status: Ready");
                 });
             } catch (Exception e) {
                 LOGGER.log(Level.SEVERE, "Failed to load queue", e);
                 Platform.runLater(() -> {
                     showAlert("Error", "Failed to load queue: " + e.getMessage());
-                    statusLabel.setText("Status: Error");
                 });
             }
         }).start();
@@ -271,7 +264,6 @@ public class ReceptionistDashboardController {
                 newQueue.setPatientId(selectedPatient.getPatientId());
                 newQueue.setDoctorId(currentReceptionist.getAssignedDoctor().getDoctorId());
                 newQueue.setReceptionistId(currentReceptionist.getReceptionistId());
-                newQueue.setStatus("Waiting");
                 newQueue.setQueuedAt(LocalDateTime.now());
                 
                 queueService.addToQueue(newQueue);
@@ -289,19 +281,16 @@ public class ReceptionistDashboardController {
     @FXML
     private void handleDashboard() {
         loadAllPatients();
-        statusLabel.setText("Status: Dashboard View");
     }
 
     @FXML
     private void handlePatients() {
         loadAllPatients();
-        statusLabel.setText("Status: Patient List View");
     }
 
     @FXML
     private void handleQueue() {
         loadQueuedPatients();
-        statusLabel.setText("Status: Queue View");
     }
 
     @FXML
